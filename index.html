@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사과팔기</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+      @font-face {
+        font-family: "PyeongChangPeace-Bold";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2")
+          format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 30px;
+        font-family: "PyeongChangPeace-Bold";
+      }
+      h2 {
+        text-align: center;
+        font-size: 15px;
+        font-family: "PyeongChangPeace-Bold";
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #answer {
+        text-align: center;
+        font-size: 35px;
+        font-family: "Bungee Spice", cursive;
+      }
+      #A {
+        font-family: "PyeongChangPeace-Bold";
+        font-size: 70px;
+      }
+      #B {
+        font-family: "PyeongChangPeace-Bold";
+        font-size: 30px;
+      }
+      #C {
+        font-family: "PyeongChangPeace-Bold";
+        font-size: 15px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>사과 팔기 결과</h1>
+    <img
+      src="http://kormedi.com/wp-content/uploads/2020/10/roman-samokhin-580x4291-580x429.jpg"
+      alt="apple"
+    />
+    <br />
+    <p id="answer"></p>
+    <div id="A">얼마?</div>
+    <br />
+    <div id="B">결과</div>
+    <br />
+    <div id="C">HERE</div>
+
+    <script>
+      let cust = document.getElementById("A");
+      let cust2 = document.getElementById("B");
+
+      function Money(i) {
+        let d = 0;
+        let cur = i;
+        if (i > 30000) {
+          cust.innerHTML = "미쳤어요? 안사요!!!!!!!!";
+          cust2.innerHTML = "DOWN";
+        } else if (i < 25000) {
+          cust.innerHTML = "뭐그렇게 싸요? 사기죠?? 흥";
+          cust2.innerHTML = "UP";
+        } else {
+          cust.innerHTML = "합리적인 가격이군요!";
+          cust2.innerHTML = "당신이 받은 현금";
+          d = parseInt(cur / 50000); //소수점 버리기
+          let ret = "";
+          ret += "50000원X " + d.toString() + "개" + "<br>";
+          cur -= 50000 * d;
+          //10000
+          d = parseInt(cur / 10000); //소수점 버리기
+          ret += "10000원X " + d.toString() + "개" + "<br>";
+          cur -= 10000 * d;
+          //5000
+          d = parseInt(cur / 5000); //소수점 버리기
+          ret += "5000원X " + d.toString() + "개" + "<br>";
+          cur -= 5000 * d;
+
+          //1000
+          d = parseInt(cur / 1000); //소수점 버리기
+          ret += "1000원X " + d.toString() + "개" + "<br>";
+          cur -= 1000 * d;
+
+          d = parseInt(cur / 500); //소수점 버리기
+          ret += "500원X " + d.toString() + "개" + "<br>";
+          cur -= 500 * d;
+
+          d = parseInt(cur / 100); //소수점 버리기
+          ret += "100원X " + d.toString() + "개" + "<br>";
+          cur -= 100 * d;
+          return ret;
+        }
+      }
+
+      let input = Number(
+        prompt("사과를 팔아보세요. 이 사과 얼마죠?(숫자만적으세요)")
+      );
+      let R = document.getElementById("C");
+
+      R.innerHTML = "당신이 받은 돈" + "<br>" + Money(input);
+    </script>
+  </body>
+</html>
